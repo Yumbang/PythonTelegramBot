@@ -1,12 +1,23 @@
+import logging
 import telegram
+from telegram.ext import Updater
 
-bot = telegram.Bot(token='1986430016:AAG37he-O23D6GegnOZWRNymBeYS45QiNgo')
-
-print('-------------------- BOT INFO ---------------------')
-print(bot.get_me())
+updater = Updater(token='1986430016:AAG37he-O23D6GegnOZWRNymBeYS45QiNgo', use_context = True)
+dispatcher = updater.dispatcher
 
 
-updates = bot.get_updates()
 
-print('-------------------- UPDATED INFO -----------------')
-print(updates[0])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
