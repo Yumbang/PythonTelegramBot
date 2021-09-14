@@ -7,9 +7,10 @@ from telegram.ext import MessageHandler, Filters
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import InlineQueryHandler
 
+tokenFile = open("token.txt", "r")
+tokenString = tokenFile.readline()
 
-
-updater = Updater(token='1986430016:AAG37he-O23D6GegnOZWRNymBeYS45QiNgo', use_context = True)
+updater = Updater(token=tokenString, use_context = True)
 dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
