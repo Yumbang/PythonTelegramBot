@@ -7,8 +7,11 @@ from telegram.ext import MessageHandler, Filters
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import InlineQueryHandler
 
-tokenFile = open("token.txt", "r")
-tokenString = tokenFile.readline()
+tokenFile = open("token.txt", 'r')
+tokenString =tokenFile.read()
+print(tokenString)
+tokenFile.close()
+
 
 updater = Updater(token=tokenString, use_context = True)
 dispatcher = updater.dispatcher
@@ -39,6 +42,8 @@ def inline_caps(update, context):
             )
     context.bot.answer_inline_query(update.inline_query.id, results)
 
+def unknown(update, context):
+    context.bot.send_message(chat_id = update.effective_chat.id, text = "Sorry, I don't understand.")
 
 
 
@@ -53,6 +58,9 @@ dispatcher.add_handler(caps_handler)
 
 inline_caps_handler = InlineQueryHandler(inline_caps)
 dispatcher.add_handler(inline_caps_handler)
+
+unknown_handler = MessageHandler(Filters.command, unknown)
+dispatcher.add_handler(unknown_handler)
 
 
 updater.start_polling()
